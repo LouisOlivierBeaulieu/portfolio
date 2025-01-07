@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-info">
+   <h2>{{ animal['nom'] }}</h2><br>
+   <p>Vous pouvez contacter le propriétaire de l'animal en utilisant l'adresse 
+   courriel indiquée sur l'annonce. Une fois les arrangements pris, il sera possible de venir chercher l'animal directement à l'adresse fournie. N'hésitez pas à poser toutes vos questions pour assurer une adoption sereine et réussie !</p>
+   <div class="animal-info">
+      <ul>
+         <li>Nom de l'animal :<br>{{ animal['nom'] }}</li><br>
+         <li>Espece de l'animal :<br>{{ animal['espece'] }}</li><br>
+         <li>Race de l'animal :<br>{{ animal['race'] }}</li><br>
+         <li>Âge de l'animal :<br>{{ animal['age'] }}</li><br>
+         <li>Description de l'animal :<br>{{ animal['description'] }}</li><br>
+         <li>Courriel du propriétaire :<br><a href="mailto:{{ animal['courriel'] }}">{{ animal['courriel'] }}</a></li><br>
+         <li>Adresse :<br>{{ animal['adresse']  }}</li><br>
+         <li>Ville :<br>{{ animal['ville'] }}</li><br>
+         <li>Code postal :<br>{{ animal['cp'] }}</li><br>
+      </ul>
+   </div>
+</div>
+{% endblock %}

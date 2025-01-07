@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-info">
+   <h2>Centre d'adoption d'animaux de compagnie</h2><br>
+   <p>
+      Bienvenue sur PawHub, la plateforme dédiée à l'adoption et à la mise en adoption d’animaux de compagnie.<br><br>
+      Que vous soyez à la recherche d’un compagnon fidèle ou que vous souhaitiez offrir une seconde chance à un animal en quête d’un foyer aimant, PawHub est là pour vous accompagner.<br><br>
+      Notre site met en relation des familles aimantes et des animaux issus de refuges, le tout dans un esprit de bienveillance et de responsabilité.<br><br>
+      Ensemble, contribuons à réduire le nombre d’animaux sans abri et à créer des histoires remplies de bonheur et de complicité. Adoptez, partagez, et faites partie de la communauté PawHub !
+   </p>
+   <h2 id="en-vedette">Animaux en vedette</h2>
+   <div class="animaux">
+      {% for animal in animaux %}
+      <div class="animal">
+         <h3>{{ animal['nom'] }}</h3><br>
+         <ul>
+            <li>Espece : {{ animal['espece'] }}</li>
+            <li>Race : {{ animal['race'] }}</li>
+            <li>Âge : {{ animal['age'] }} ans</li>
+         </ul><br>
+         <a href="/animal/{{ animal['id'] }}">Visiter la page</a>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

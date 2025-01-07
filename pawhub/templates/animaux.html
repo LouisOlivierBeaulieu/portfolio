@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-info">
+   <h2>Résultats pour "{{ query }}"</h2><br><br>
+   {% if animaux|length == 0 %}
+   <h2>Aucun animal ne correspond à votre recherche...</h2><br>
+   {% else %}
+   <div class="animaux">
+      {% for animal in animaux %}
+      <div class="animal">
+         <h3>{{ animal['nom'] }}</h3><br>
+         <ul>
+            <li>Espece : {{ animal['espece'] }}</li>
+            <li>Race : {{ animal['race'] }}</li>
+            <li>Âge : {{ animal['age'] }} ans</li>
+         </ul><br>
+         <a href="/animal/{{ animal['id'] }}">Visiter la page</a>
+      </div>
+      {% endfor %}
+   </div>
+   {% endif %}
+</div>
+{% endblock %}
