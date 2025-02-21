@@ -1032,9 +1032,13 @@ class Game:
                 if type(board_array[i][j]) is King and board_array[i][j].is_black() != black:
                     font = pygame.font.SysFont(None, 50)
                     mate_symb = font.render("#", True, KILL_COL)
+                    if not black:
+                        i = 7 - i
+                        j = 7 - j
                     self.surface.blit(mate_symb, (120 * i + 90, 120 * j + 55))
                     pygame.draw.rect(self.surface, KILL_COL, (i * SQUARE , j * SQUARE + 48, SQUARE, SQUARE + 2), 4)
-        pygame.display.update()
+                    pygame.display.update()
+                    return
 
     def print_stale(self, black, board):
         board_array = board.get_board()
