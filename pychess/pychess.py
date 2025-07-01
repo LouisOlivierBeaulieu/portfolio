@@ -558,12 +558,19 @@ class King:
         
     def check_castle(self, orig, player_factor, board_array, begin_index, end_index, x_final_pos):
         castle_valid = True
+        rook_valid = False
 
         if self.black:
-            rook_valid = type(board_array[0][0]) is Rook and not board_array[0][0].get_moved()
+            if x_final_pos == 2:
+                rook_valid = type(board_array[0][0]) is Rook and not board_array[0][0].get_moved()
+            elif x_final_pos == 6:
+                rook_valid = type(board_array[7][0]) is Rook and not board_array[7][0].get_moved()
             rook_y = 0
         else:
-            rook_valid = type(board_array[0][7]) is Rook and not board_array[0][7].get_moved()
+            if x_final_pos == 2:
+                rook_valid = type(board_array[0][7]) is Rook and not board_array[0][7].get_moved()
+            elif x_final_pos == 6:
+                rook_valid = type(board_array[7][7]) is Rook and not board_array[7][7].get_moved()
             rook_y = 7
 
         if rook_valid:
@@ -571,6 +578,8 @@ class King:
                 if board_array[i][rook_y] is not None or not is_safe(orig, i, rook_y, board_array, self.black, player_factor):
                     castle_valid = False 
                     break
+        else:
+            castle_valid = False
                 
         if castle_valid:
             self.possible_dest.append((x_final_pos, rook_y))
